@@ -56,8 +56,12 @@ pip3 install -r requirements.txt
 
 Once you have got your venv activated, run the following command:
 
+#### Mac OSX / Linux
+```
+python3 chess.py
+```
+
+#### Windows
 ```
 chess.py
 ```
-
-
