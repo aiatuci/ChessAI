@@ -57,7 +57,7 @@ pip install -r requirements.txt
 Once you have got your venv activated, run the following command
 
 ```
-python chess.py
+python3 chess.py
 ```
 
 
