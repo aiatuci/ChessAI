@@ -45,11 +45,11 @@ pip3 install --user virtualenv
 
 Then, you have to run the following to make and activate the venv
 ```
-virtualenv chessenv
+py -m venv env
 
 chessenv\Scripts\activate.bat
 
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 ```
 ### RUN
