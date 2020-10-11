@@ -161,7 +161,6 @@ class Board:
 
         # If mouse position is out of bounds, de-select current tile (if applicable) and restore its color
         if not self.in_bounds(coords):
-            print("Out of bounds selection.")
             if self.selected:
                 self.selected.fill(self.selected.color)
                 self.selected = None
@@ -171,7 +170,6 @@ class Board:
         if self.selected and coords in self.selected.piece.valid_moves(self) \
                 and not self.in_check_after_move((self.selected.piece.x, self.selected.piece.y), coords,
                                                  self.selected.piece.color):
-            print("Moving Piece!")
             #self.move_piece((self.selected.x, self.selected.y), (x, y))
             self.make_move((self.selected.x, self.selected.y), (x, y))
             self.selected = None
@@ -180,59 +178,13 @@ class Board:
 
         # Restore color and de-select previously selected tile before selecting new tile
         if self.selected:
-            print("De-selecting old tile.")
             self.selected.fill(self.selected.color)
             self.selected = None
 
         # Select tile at coordinates and remember tile
         if self.piece_at_coords((x, y)) and self.tilemap[x][y].piece.color == self.turn:
-            print("Selected Tile.")
             self.tilemap[x][y].select()
             self.selected = self.tilemap[x][y]
-
-    # def move_piece(self, source, dest) -> None:
-    #     """
-    #     Moves piece from source coords to dest coords and makes necessary updates to game state
-    #     :param source: coordinates of tile that piece is moving from (tuple)
-    #     :param dest: coordinates of tile that piece is moving to (tuple)
-    #     :return: None
-    #     """
-    #
-    #     # get shorthand for source and destination tiles
-    #     source_tile = self.tilemap[source[0]][source[1]]
-    #     dest_tile = self.tilemap[dest[0]][dest[1]]
-    #
-    #     # update scores
-    #     if dest_tile.piece:
-    #         if self.turn == WHITE:
-    #             self.blackScore -= self.values[type(dest_tile.piece)]
-    #         else:
-    #             self.whiteScore -= self.values[type(dest_tile.piece)]
-    #
-    #     # promote piece if it meets requirements
-    #     if type(source_tile.piece) is Pawn:
-    #         if source_tile.piece.color == WHITE and dest_tile.y == 0 \
-    #                 or source_tile.piece.color == BLACK and dest_tile.y == 7:
-    #             source_tile.piece = Queen(source_tile.piece.x, source_tile.piece.y, source_tile.piece.color)
-    #
-    #     # move piece from source tile to dest tile
-    #     dest_tile.piece = source_tile.piece
-    #     source_tile.piece.move(dest_tile.x, dest_tile.y)
-    #     dest_tile.piece.firstMove = False
-    #
-    #     # update king coords if necessary
-    #     if type(source_tile.piece) is King:
-    #         if source_tile.piece.color == BLACK:
-    #             self.blackKingCoords = dest_tile.x, dest_tile.y
-    #         else:
-    #             self.whiteKingCoords = dest_tile.x, dest_tile.y
-    #
-    #     # remove piece from source tile
-    #     source_tile.piece = None
-    #     source_tile.fill(source_tile.color)
-    #
-    #     self.checkmate()
-    #     self.check_win_conditions()
 
     def copy(self):
         """
@@ -457,37 +409,6 @@ class Board:
 
         self.next_turn()
 
-    def can_castle(self, color) -> list:
-        """
-        Returns list of castling moves if player of specified color can castle
-        :param color: color of player to check castling ability
-        :return: list
-        """
-        moves = []
-        if color == WHITE:
-            # Make sure pieces are Rook/King, positions are correct, and that it is their first move
-            if type(self.tilemap[4][7].piece) is King and self.tilemap[4][7].piece.firstMove:
-                # Castle left
-                if type(self.tilemap[0][7].piece) is Rook and self.tilemap[0][7].piece.firstMove \
-                        and self.tilemap[1][7].piece == self.tilemap[2][7].piece == self.tilemap[3][7].piece is None:
-                    moves.append((2, 7))
-                # Castle right
-                if type(self.tilemap[7][7].piece) is Rook and self.tilemap[7][7].piece.firstMove \
-                        and self.tilemap[5][7].piece == self.tilemap[6][7].piece is None:
-                    moves.append((6, 7))
-        else:
-            # Make sure pieces are Rook/King, positions are correct, and that it is their first move
-            if type(self.tilemap[4][0].piece) is King and self.tilemap[4][0].piece.firstMove:
-                # Castle left
-                if type(self.tilemap[0][0].piece) is Rook and self.tilemap[0][0].piece.firstMove \
-                        and self.tilemap[1][0].piece == self.tilemap[2][0].piece == self.tilemap[3][0].piece is None:
-                    moves.append((2, 0))
-                # Castle right
-                if type(self.tilemap[7][0].piece) is Rook and self.tilemap[7][0].piece.firstMove \
-                        and self.tilemap[5][0].piece == self.tilemap[6][0].piece is None:
-                    moves.append((6, 0))
-        return moves
-
     def next_turn(self) -> None:
         """
         Switches turn of board to the other player
@@ -593,6 +514,3 @@ class Board:
         elif (piece_counts["wminor"] == 1 and piece_counts["king"] == 2 and piece_counts["bminor"] == 0) or (piece_counts["bminor"] == 1 and piece_counts["king"] == 2 and piece_counts["wminor"] == 0):
             self.gameover = ("Insufficient Material", None)
 
-        # Self-play
-        # elif piece_counts["wminor"] < 3:
-        #     self.gameover = ("TESTING", None)
