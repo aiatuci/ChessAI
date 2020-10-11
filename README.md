@@ -40,7 +40,7 @@ pip3 install -r requirements.txt
 If on windows, you may have to run the following in order to install the virtual environment tool
 
 ```
-pip3 install virtualenv
+pip3 install --user virtualenv
 ```
 
 Then, you have to run the following to make and activate the venv
