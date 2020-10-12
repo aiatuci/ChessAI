@@ -7,7 +7,7 @@ def random_move(board):
     """
     Selects a random move from the valid moves for the current players turn
     :param board: the current board being used for the game (Board)
-    :return: tuple representing move ((sourceX, sourceY), (destX, destY))
+    :return: tuple representing move; format: ((sourceX, sourceY), (destX, destY))
     """
     moves = board.get_moves()
     if moves:
@@ -21,10 +21,10 @@ def evaluate(board, maximizing_color):
     :param maximizing_color: color associated with maximizing player (tuple)
     :return: integer representing boards value
     """
-    pass
+    pass    # YOUR CODE GOES HERE # DELETE THIS LINE #
 
 
-def minimax(board, depth, alpha, beta, maximizing_player, maximizing_color):
+def minimax(board, depth, maximizing_player, maximizing_color, alpha=-inf, beta=inf, ):
     """
     Minimax algorithm used to find best move for the AI
     :param board: the current board being used for the game (Board)
@@ -35,4 +35,4 @@ def minimax(board, depth, alpha, beta, maximizing_player, maximizing_color):
     :param maximizing_color: color of the AI using this function to determine a move (tuple)
     :return: tuple representing move and eval; format: (move, eval)
     """
-    pass
+    pass    # YOUR CODE GOES HERE # DELETE THIS LINE #
