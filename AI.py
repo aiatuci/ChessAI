@@ -24,7 +24,7 @@ def evaluate(board, maximizing_color):
     pass    # YOUR CODE GOES HERE # DELETE THIS LINE #
 
 
-def minimax(board, depth, maximizing_player, maximizing_color, alpha=-inf, beta=inf, ):
+def minimax(board, depth, alpha, beta, maximizing_player, maximizing_color):
     """
     Minimax algorithm used to find best move for the AI
     :param board: the current board being used for the game (Board)
