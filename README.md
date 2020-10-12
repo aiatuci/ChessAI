@@ -66,6 +66,8 @@ python3 chess.py
 chess.py
 ```
 
+Note: The Minimax AI will not work until you complete the code outlined in the video. But, you should try playing against the random AI to make sure that everything works.
+
 ### Playing on a Powerful PC?
 
 If you have a powerful computer, try upping the depth parameter of the minimax algorithm. To do this, navigate to the "chess.py" file in the project directory, and locate the function named determine_move. Once there, you can increase the number to be greater than 3. I started getting recursion errors when I went past 100, so I would recommend that you stay below that threshold.
