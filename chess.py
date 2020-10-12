@@ -133,7 +133,7 @@ class Game:
         """
         # Determine move based on selected AI
         if self.p2_name == "Minimax":
-            self.ai_move.put(AI.minimax(self.board.copy(), 3, True, self.p2_color)[0])
+            self.ai_move.put(AI.minimax(self.board.copy(), 3, inf, -inf, True, self.p2_color)[0])
         else:
             self.ai_move.put(AI.random_move(self.board))
 
