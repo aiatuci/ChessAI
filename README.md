@@ -26,7 +26,12 @@ First off, create your virtual environment by entering the commands below...
 
 ### Mac OSX / Linux
 
-If on OSX or Linux, enter the following into terminal:
+Install virtual environment tool:
+```
+pip3 install virtualenv
+```
+
+Create and activate virtual environment:
 ```
 python3 -m venv chessenv
 
@@ -37,20 +42,18 @@ pip3 install -r requirements.txt
 
 ### Windows
 
-If on windows, you may have to run the following in order to install the virtual environment tool:
-
+Install virtual environment tool:
 ```
 pip3 install --user virtualenv
 ```
 
-Then, you have to run the following to make and activate the venv:
+Create and activate virtual environment:
 ```
 py -m venv chessenv
 
 chessenv\Scripts\activate.bat
 
 pip3 install -r requirements.txt
-
 ```
 ### RUN
 
